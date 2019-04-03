@@ -12,7 +12,7 @@ function print (text) {
  * чтобы функция sayHello работала корректно
  */
 function isValid (name) {
-    console.log(name.indexOf(' '));
+    //console.log(name.indexOf(' '));
     if ( (name.indexOf(' ') !== -1) || (name.length < 4) || (name == '') ) return false;
     return true;
 }
