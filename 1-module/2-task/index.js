@@ -13,7 +13,7 @@ function print (text) {
  */
 function isValid (name) {
     //console.log(name.indexOf(' '));
-    if ( (name.indexOf(' ') !== -1) || (name == null) || (name.length < 4) || (name == '') ) return false;
+    if ( (name == null) || (name == '') || (name.indexOf(' ') !== -1) || (name.length < 4) ) return false;
     return true;
 }
 
