@@ -5,29 +5,21 @@
  */
 
 function clone (obj) {
-    
-    let objClone = {};
+    let result = {};
 
-    (function deepClone (obj) {
-        for (let key in obj) {
-        objClone[key] = obj[key];
-        if (typeof obj[key] == 'object') {
-            deepClone(obj[key]);
-        }
-        }
-    })();
+    if (typeof obj !== 'object') {
+        return obj;
+    }
 
-    return objClone;
+    for (let key in obj) {
+
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            result[key] = clone(obj[key]);
+        } else {
+            result[key] = obj[key];
+        }
+
+    }
+
+    return result;
 };
-
-// let obj = {test: 1};
-// let obj = {test: { test2: { test3: '1' } }};
-let obj = {test: { test2: { test3: null } }, cln: 1};
-
-
-console.log(clone(obj) !== obj);
-console.log(clone(obj));
-
-console.log(clone(obj).test.test2 !== obj.test.test2);
-console.log(clone(obj).test.test2.test3 === obj.test.test2.test3);
-
